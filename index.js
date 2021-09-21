@@ -54,3 +54,8 @@ app.use('/api', apiRoutes);
 app.listen(port, function () {
     console.log("Running RestHub on port " + port);
 });
+
+const http = require('http')
+
+const server = http.createServer(app)
+module.exports = server
