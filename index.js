@@ -29,8 +29,9 @@ mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true });
 var db = mongoose.connection
 
 // Added check for DB connection
-if(!db)
+if(!db) {
     console.log("Error connecting db")
+}
 else
     console.log("Db connected successfully")
 
