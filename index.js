@@ -4,16 +4,25 @@ let express = require('express');
 let bodyParser = require('body-parser');
 // Import Mongoose
 let mongoose = require('mongoose');
+
+let cors = require('cors');
+
 // Initialise the app
 let app = express();
 
 // Import routes
 let apiRoutes = require("./api-routes");
 // Configure bodyparser to handle post requests
-app.use(bodyParser.urlencoded({
+app.use(express.urlencoded({
     extended: true
 }));
-app.use(bodyParser.json());
+app.use(cors());
+app.use(express.json());
+app.use(function(req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    next();
+});
 // Connect to Mongoose and set connection variable
 //const { MongoClient } = require('mongodb');
 const uri = "mongodb+srv://newUser:1998@cluster0.lohf1.mongodb.net/contactsDB?retryWrites=true&w=majority";
