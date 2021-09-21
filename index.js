@@ -15,8 +15,17 @@ app.use(bodyParser.urlencoded({
 }));
 app.use(bodyParser.json());
 // Connect to Mongoose and set connection variable
-mongoose.connect('mongodb://localhost/resthub', { useNewUrlParser: true});
-var db = mongoose.connection;
+//const { MongoClient } = require('mongodb');
+const uri = "mongodb+srv://newUser:1998@cluster0.lohf1.mongodb.net/contactsDB?retryWrites=true&w=majority";
+//const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
+// client.connect(err => {
+//   const collection = client.db("contactsDB").collection("contacts");
+//   // perform actions on the collection object
+//   client.close();
+// });
+mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true });
+// var db = mongoose.connection;
+var db = mongoose.connection
 
 // Added check for DB connection
 if(!db)
