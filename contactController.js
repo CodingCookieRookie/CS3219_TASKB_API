@@ -14,7 +14,7 @@ exports.index = function (req, res) {
         } else {
             res.json({
                 status: "success",
-                message: "Contact details retrieved successfully",
+                message: "Contact details retrieved successfully!",
                 data: contacts
             });
         }
@@ -146,7 +146,7 @@ exports.update = function (req, res) {
                     if (err)
                         res.json(err);
                     res.json({
-                        message: 'Contact details updated',
+                        message: 'Contact details updated!',
                         data: contact
                     });
                 });
