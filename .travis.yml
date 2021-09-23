@@ -1,4 +1,3 @@
-install: travis_wait mvn install
 language: node_js
 node_js:
 - 14
@@ -9,4 +8,5 @@ notifications:
 deploy:
   api_key:
     secure: Ysr+UP87dYpmTA2mP0WBj35HjXKQz3ZxiaxpEs+8ZXoJs4FXIPXgaWrxmZt/RMi3SEu+w+wgt/F3npproez1uMBs4W5RG9FF6myryaEMnzLQkL0pDTjTPYwiaB8eAECk3KsgI3DoWwEqRqlkyARqCiUqFbMAUbq7jNZ5lWtEpuHEy48I04H39JkqAe7s8duQ6C+/v+C+cbltlL+ExsLcRpzhEooPVo4CExOpZLMMMMUZh8pJiIa+IRVaQpnkSLji7BvSs2kRarWId+QTPOoGwdamNNUI6yTTagcNyrRUu3P5zpm0QYqDT9JRmPlmb6dkJ3y5k3t97o1/mfURu7kCLNnrxzbegtYJ+Nq/Qwq24C5CaoGcWwr86Qe6h9v7jZQqSysobLHhSN0FWpmByalntXSWIQ2VJqcvacTLVzvEGEHuBHwC4KCnoXfnGDqD+IAdiglPsxE5BxxHczBrgGiXMJrULl+9i8Tb9yt61OSLTYFY/ehx0IEWsDB+kFWZVwNVV4YlgICYpWO17pwCY4slAEH6bg+U+IbQRsDQgH8bkux3L+zcPY1R1NH/soueelIsuihijLy6o0jff6Abtqszfw74jDInE9W3b+0anjFEk7EHex/V6q2YRZJahO7WKWDA3cywg2bLKex75QI3xgs0243K31dTq6fpb+RgyAOhPJk=
+mvn install: "travis_wait mvn install"    
 
