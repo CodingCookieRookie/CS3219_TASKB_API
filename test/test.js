@@ -19,17 +19,6 @@ describe('GET', function() {
           done();
       });
   });
-  it('should show all contacts', function(done) {
-    chai.request(app)
-        .get('/api/contacts')
-        .end((error, result) => {
-          result.should.have.status(200);
-          result.body.status.should.equal("success");
-          result.body.message.should.equal("Contact details retrieved successfully!");
-          assert(result.body.data);
-          done();
-      });
-  });
   it('should show a specified contact', function(done) {
     chai.request(app)
         .get(`/api/contacts/${testData[0].email}`)
