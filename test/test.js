@@ -10,6 +10,7 @@ chai.should(); // use Should Assertion style
 
 describe('GET', function() {
   it('should show main api message', function(done) {
+    this.timeout(5000);
     chai.request(app)
         .get('/api')
         .end((error, result) => {
@@ -20,6 +21,7 @@ describe('GET', function() {
       });
   });
   it('should show a specified contact', function(done) {
+    this.timeout(5000);
     chai.request(app)
         .get(`/api/contacts/${testData[0].email}`)
         .end((error, result) => {
@@ -33,6 +35,7 @@ describe('GET', function() {
 
 describe('POST', function() {
   it('should add a new random contact', function(done) {
+    this.timeout(5000);
     chai.request(app)
         .post('/api/contacts')
         .send(testData[0])
@@ -58,6 +61,7 @@ describe('POST', function() {
       });
   });
   it(`should have specified contacts ${testData[0].name}`, function(done) {
+    this.timeout(5000);
     chai.request(app)
         .get(`/api/contacts/${testData[0].email}`)
         .end((error, result) => {
@@ -74,6 +78,7 @@ describe('POST', function() {
 
 describe('PUT', function() {
   it('should update a specific contacts', function(done) {
+    this.timeout(5000);
     chai.request(app)
         .put(`/api/contacts/${testData[0].email}`)
         .send({name: "alvin", email: testData[0].email})
@@ -88,6 +93,7 @@ describe('PUT', function() {
         });
   });
   it('should update a specific contacts', function(done) {
+    this.timeout(5000);
     chai.request(app)
         .put(`/api/contacts/${testData[0].email}`)
         .send({name: "Johny", email: testData[0].email})
@@ -105,6 +111,7 @@ describe('PUT', function() {
 
 describe('DELETE', function() {
   it('should delete a contacts with specified email', function(done) {
+    this.timeout(5000);
     chai.request(app)
         .delete(`/api/contacts/${testData[0].email}`)
         .end((error, result) => {
