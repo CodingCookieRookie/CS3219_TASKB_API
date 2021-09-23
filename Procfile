@@ -1,1 +1,1 @@
-serverless: python serverless-task.py
+serverless: npm start
