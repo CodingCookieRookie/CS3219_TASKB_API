@@ -1,8 +1,6 @@
-install: travis_wait mvn install
 language: node_js
 node_js:
 - 14
 services:
 - mongodb
-notifications:
-  email: false
+sudo: false
