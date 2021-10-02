@@ -23,6 +23,25 @@
   z-index: 1;
 }
 
+.NavigationButtons{
+  display:flex;
+  cursor: pointer;
+  z-index: 1;
+}
+
+.NavigationButtonLeft{
+  width: 15vmin;
+  height: 8vmin;
+  margin-left: 10vmin;
+}
+
+.NavigationButtonRight{
+  width: 15vmin;
+  height: 8vmin;
+  margin-right: 10vmin;
+  margin-left: auto;
+}
+
 /* .Add-contact-button{
   background-color: #282c34;
   border-radius: 2vmin;
@@ -41,6 +60,8 @@
   z-index: 3;
   width: 600px;
   height: 600px;
+  margin-right: 10px;
+  margin-left: 10px;
   /*display: none;*/
 }
 
