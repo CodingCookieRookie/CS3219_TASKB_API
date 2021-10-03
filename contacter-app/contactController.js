@@ -9,49 +9,34 @@ const redisClient = Redis.createClient();
 const expiration = 3600; //Expiration = 1hour
 
 exports.index = function (req, res) {
-    Contact.get(function (err, contacts) {
+    redisClient.get("contacts", async (err, data) => {
+        
         if (err) {
-            res.json({
-                status: "error",
-                message: err,
-            });
-        } else {
-           // redisClient.setex("contacts", expiration, JSON.stringify(contacts));
+            failureJson(res, err);
+        } else if (data) {
             res.json({
                 status: "success",
-                message: "Contact details retrieved successfully!",
-                data: contacts
+                message: "Users retrieved successfully!",
+                data: JSON.parse(data)
+            });
+        } else {
+            Contact.get(function (err, contacts) {
+                if (err) {
+                    res.json({
+                        status: "error",
+                        message: err,
+                    });
+                } else {
+                    redisClient.setex("contacts", expiration, JSON.stringify(contacts));
+                    res.json({
+                        status: "success",
+                        message: "Contact details retrieved successfully!",
+                        data: contacts
+                    });
+                }
             });
         }
-    });
-    // redisClient.get("contacts", async (err, data) => {
-        
-    //     if (err) {
-    //         failureJson(res, err);
-    //     } else if (data) {
-    //         res.json({
-    //             status: "success",
-    //             message: "Users retrieved successfully!",
-    //             data: JSON.parse(data)
-    //         });
-    //     } else {
-    //         Contact.get(function (err, contacts) {
-    //             if (err) {
-    //                 res.json({
-    //                     status: "error",
-    //                     message: err,
-    //                 });
-    //             } else {
-    //                 redisClient.setex("contacts", expiration, JSON.stringify(contacts));
-    //                 res.json({
-    //                     status: "success",
-    //                     message: "Contact details retrieved successfully!",
-    //                     data: contacts
-    //                 });
-    //             }
-    //         });
-    //     }
-    // })
+    })
 };
 
 function validateEmail(email) {
